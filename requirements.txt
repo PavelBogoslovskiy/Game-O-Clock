@@ -1,0 +1,5 @@
+mediapipe==0.8.9
+numpy==1.21.4
+opencv-contrib-python==4.5.4.60
+opencv-python==4.5.4.60
+pyglet==1.4.10
