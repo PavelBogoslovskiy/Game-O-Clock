@@ -40,11 +40,11 @@ def pose_correct(image, text, angle, correct_max, y, correct_min=0):
     Checking for correct posture
     """
     if correct_min <= angle <= correct_max:
-        cv2.putText(image, text, (10, y),
+        cv2.putText(image, text, (15, y),
                     cv2.FONT_HERSHEY_TRIPLEX, 0.35, (0, 0, 0), 1, cv2.LINE_AA)
-        return 0, image
+        return 0
     else:
-        return 1, image
+        return 1
 
 
 def time_initialization(round_len=2):

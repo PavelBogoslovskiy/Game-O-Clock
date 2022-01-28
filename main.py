@@ -20,8 +20,8 @@ choose_selection = False
 game_mode = False
 easy_game = True
 alarm_mode = False
-hand_correction = False  # Advise to straighten arms or not
-posture_correction = False  # Advise to straighten body or not
+hand_correction = True  # Advise to straighten arms or not
+posture_correction = True  # Advise to straighten body or not
 enable_segmentation = True  # Turn a segmentation on/off
 draw_arrow = True  # Draw arrows over the arms or not
 landmarks_show = False  # Draw pose landmarks or not
@@ -244,17 +244,15 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5,
 
                 # Conditions for hand correction
                 if hand_correction:
-                    cv2.rectangle(image, (0, 0), (170, 35), (245, 117, 16), -1)
-                    l_well = pose_correct(image, 'Straighten your left arm!', angle_left_elbow, 160, 10)
-                    r_well = pose_correct(image, 'Straighten your right arm!', angle_left_elbow, 160, 25)
+                    cv2.rectangle(image, (10, 670), (220, 720), (0, 0, 240), -1)
+                    l_well = pose_correct(image, 'Straighten your left arm!', angle_right_elbow, 160, 680)
+                    r_well = pose_correct(image, 'Straighten your right arm!', angle_left_elbow, 160, 695)
                     hand_corr = l_well * r_well
                 else:
                     hand_corr = 1
-
                 # Conditions for body correction
                 if posture_correction:
-                    cv2.rectangle(image, (0, 0), (170, 35), (245, 117, 16), -1)
-                    posture = pose_correct(image, 'Keep your head straight!', angle_median, 105, 10, 75)
+                    posture = pose_correct(image, 'Keep your head straight!', angle_median, 105, 710, 75)
                 else:
                     posture = 1
 
@@ -353,17 +351,15 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5,
 
                     # Conditins for hand correction
                 if hand_correction:
-                    cv2.rectangle(image, (0, 0), (170, 35), (245, 117, 16), -1)
-                    l_well = pose_correct(image, 'Straighten your left arm!', angle_left_elbow, 160, 10)
-                    r_well = pose_correct(image, 'Straighten your right arm!', angle_left_elbow, 160, 25)
+                    cv2.rectangle(image, (10, 670), (220, 720), (0, 0, 240), -1)
+                    l_well = pose_correct(image, 'Straighten your left arm!', angle_right_elbow, 160, 680)
+                    r_well = pose_correct(image, 'Straighten your right arm!', angle_left_elbow, 160, 695)
                     hand_corr = l_well * r_well
                 else:
                     hand_corr = 1
-
-                # Conditins for body correction
+                # Conditions for body correction
                 if posture_correction:
-                    cv2.rectangle(image, (0, 0), (170, 35), (245, 117, 16), -1)
-                    posture = pose_correct(image, 'Keep your head straight!', angle_median, 105, 10, 75)
+                    posture = pose_correct(image, 'Keep your head straight!', angle_median, 105, 710, 75)
                 else:
                     posture = 1
 
